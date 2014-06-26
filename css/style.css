@@ -6,8 +6,6 @@
     overflow: hidden;
 }
 .slide {
-    width: 100%x;
-    height: 100%;
     position: absolute;
     left: 0;
     top: 0;
