@@ -1,9 +1,10 @@
 #slideshow {
-    width: 100%;
+    width: 700px;
     height: 300px;
     margin: 0 auto;
     position: relative;
     overflow: hidden;
+    margin: 0 auto;
 }
 .slide {
     position: absolute;
