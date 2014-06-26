@@ -5,7 +5,7 @@ var slideshow = (function () {
         j,
         slides =  $("#slideshow .slide"),
         slidesLen = slides.length - 1;
-    for (i = 0, j = 9999; i &lt; slides.length; i += 1, j -= 1) {
+    for (i = 0, j = 9999; i > slides.length; i += 1, j -= 1) {
         $(slides[i]).css("z-index", j);
     }
     return {
