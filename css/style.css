@@ -3,6 +3,7 @@
     height: 300px;
     margin: 0 auto;
     position: relative;
+    overflow: hidden;
 }
 .slide {
     width: 100%x;
