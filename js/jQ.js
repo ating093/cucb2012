@@ -1,5 +1,5 @@
 "use strict";
-var slideshow = (function () {
+var slideshow = function () {
     var counter = 0,
         i,
         j,
@@ -26,5 +26,5 @@ var slideshow = (function () {
             }, 2000);
         }
     };
-}());
+};
 slideshow.startSlideshow();
