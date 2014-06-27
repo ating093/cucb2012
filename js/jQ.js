@@ -5,12 +5,15 @@
 		$(this).animate({left: "0%"}, 2000);
 	}
 	
-	$.fn.slideOut = function( next ) {
-		$(this).animate({left: "-100%"}, {duration: 2000, complete: function() {
-			$(this).css("left", "100%");
-		}, start: function() {
-			next.slideIn();
-		}	});
+	$.fn.slideOut = function() {
+		$(this).animate(
+			{left: "-100%"},
+			{
+				duration: 2000,
+				complete: function() {
+							$(this).css("left", "100%");
+							}
+			});
 	}
 
 	$.startSlideshow = function () {
@@ -24,8 +27,9 @@
 				next = 0;
 			} else next = counter + 1;
 			
-			slides.eq(counter).slideOut(slides.eq(next));
+			slides.eq(counter).slideOut();
 			counter = next;
+			slides.eq(counter).slideIn();
 			
 		}, 4000	);
     }
