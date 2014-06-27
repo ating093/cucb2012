@@ -1,32 +1,32 @@
-"use strict";
-(function ( $ ) {
-    var slideshow = function () {
-        var counter = 0,
-            i,
-            j,
-            slides =  $("#slideshow .slide"),
-            slidesLen = slides.length - 1;
-        for (i = 0, j = 9999; i > slides.length; i += 1, j -= 1) {
-            $(slides[i]).css("z-index", j);
-        }
-        return {
-            startSlideshow: function () {
-                window.setInterval(function () {
-                    if (counter === 0) {
-                        slides.eq(counter).fadeOut();
-                        counter += 1;
-                    } else if (counter === slidesLen) {
-                        counter = 0;
-                        slides.eq(counter).fadeIn(function () {
-                            slides.fadeIn();
-                        });
-                    } else {
-                        slides.eq(counter).fadeOut();
-                        counter += 1;
-                    }
-                }, 2000);
-            }
-        };
-    };
-    slideshow.startSlideshow();
+// "use strict";
+(function( $ ) {
+
+	$.fn.slideIn = function() {
+		$(this).animate({left: "0%"}, 2000);
+	}
+	
+	$.fn.slideOut = function( next ) {
+		$(this).animate({left: "-100%"}, {duration: 2000, complete: function() {
+			$(this).css("left", "100%");
+		}, start: function() {
+			next.slideIn();
+		}	});
+	}
+
+	$.startSlideshow = function () {
+		var counter = 0,
+			next,
+			slides =  $("#slideshow .slide"),
+			slidesLen = slides.length - 1;
+		
+		window.setInterval(	function () {
+			if (counter === slidesLen) {
+				next = 0;
+			} else next = counter + 1;
+			
+			slides.eq(counter).slideOut(slides.eq(next));
+			counter = next;
+			
+		}, 4000	);
+    }
 }( jQuery ));
